@@ -10,6 +10,7 @@ use Filament\Support\Facades\FilamentAsset;
 use Filament\Support\Facades\FilamentIcon;
 use Illuminate\Filesystem\Filesystem;
 use Livewire\Features\SupportTesting\Testable;
+use Livewire\Livewire;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -29,19 +30,22 @@ class SunburstChartServiceProvider extends PackageServiceProvider
          *
          * More info: https://github.com/spatie/laravel-package-tools
          */
-        $package->name(static::$name);
+        $package->name(static::$name)
+                ->hasViews()
+                ->hasTranslations();
     }
 
     public function packageBooted(): void
     {
+        Livewire::component('sunburst-chart', SunburstChart::class);
         // Asset Registration
         FilamentAsset::register(
-            $this->getAssets(),
-            $this->getAssetPackageName()
+            assets: [
+                AlpineComponent::make('sunburst-js-script', __DIR__ . '/../resources/dist/sunburst-chart.js'),
+                AlpineComponent::make('sunburst-css-script', __DIR__ . '/../resources/dist/sunburst-chart.css'),
+            ],
+            package: 'tsetis/sunburst-chart'
         );
-
-        // Testing
-        Testable::mixin(new TestsSunburstChart());
     }
 
     protected function getAssetPackageName(): ?string

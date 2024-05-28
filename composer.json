@@ -33,8 +33,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Tsetis\\SunburstChart\\": "src/",
-            "Tsetis\\SunburstChart\\Database\\Factories\\": "database/factories/"
+            "Tsetis\\SunburstChart\\": "src/"
         }
     },
     "autoload-dev": {
@@ -58,10 +57,7 @@
         "laravel": {
             "providers": [
                 "Tsetis\\SunburstChart\\SunburstChartServiceProvider"
-            ],
-            "aliases": {
-                "SunburstChart": "Tsetis\\SunburstChart\\Facades\\SunburstChart"
-            }
+            ]
         }
     },
     "minimum-stability": "dev",
