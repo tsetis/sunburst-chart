@@ -1,15 +1,15 @@
 <?php
 
-namespace VendorName\Skeleton;
+namespace Tsetis\SunburstChart;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
 
-class SkeletonPlugin implements Plugin
+class SunburstChartPlugin implements Plugin
 {
     public function getId(): string
     {
-        return 'skeleton';
+        return 'sunburst-chart';
     }
 
     public function register(Panel $panel): void
