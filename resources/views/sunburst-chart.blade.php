@@ -4,9 +4,9 @@
         x-ignore
         ax-load
         ax-load-src="{{\Filament\Support\Facades\FilamentAsset::getAlpineComponentSrc('sunburst-js-script', 'tsetis/sunburst-chart')}}"
-        x-data="SunburstObject()"
+        x-data="SunburstObject(@js($data))"
 
-        ax-load-csc="{{\Filament\Support\Facades\FilamentAsset::getStyleHref('sunburst-css-script', 'tsetis/sunburst-chart')}}"
+        ax-load-css="{{\Filament\Support\Facades\FilamentAsset::getStyleHref('sunburst-css-script', 'tsetis/sunburst-chart')}}"
         >
         <div
             id="myChart"></div>

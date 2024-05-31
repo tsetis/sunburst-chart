@@ -16,20 +16,20 @@ class SunburstChartPlugin implements Plugin
 
     public function register(Panel $panel): void
     {
-        $panel
-            ->widgets([
-                $this->sunburst::class
-            ]);
+        // $panel
+        //     ->widgets([
+        //         SunburstChart::class
+        //     ]);
     }
 
     public function boot(Panel $panel): void
     {
     }
 
-    public function __construct($data)
+    public function __construct()
     {
-        $this->sunburst = new SunburstChart();
-        $this->sunburst->setData($data);
+        // $this->sunburst = new SunburstChart();
+        // $this->sunburst->setData($data);
     }
 
     public static function make(): static

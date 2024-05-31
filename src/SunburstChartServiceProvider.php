@@ -27,6 +27,7 @@ class SunburstChartServiceProvider extends PackageServiceProvider
         $package->name(static::$name)
             ->hasViews()
             ->hasAssets()
+            ->hasViewComponents('sunburst-chart')
             ->hasTranslations();
     }
 
@@ -45,9 +46,9 @@ class SunburstChartServiceProvider extends PackageServiceProvider
         );
 
         // dump(FilamentAsset::getAlpineComponents());
-        $sunburst = new SunburstChart();
+        // $sunburst = new SunburstChart();
         FilamentAsset::registerScriptData([
-            'data' => $sunburst->getData(),
+            // 'data' => SunburstChart::getData(),
         ]);
     }
 

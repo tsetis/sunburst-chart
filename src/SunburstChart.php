@@ -3,74 +3,30 @@
 namespace Tsetis\SunburstChart;
 
 use Filament\Widgets\Widget;
+use Closure;
+use Filament\Support\Concerns\EvaluatesClosures;
+use Illuminate\Contracts\View\View;
 
 class SunburstChart extends Widget
 {
+    use EvaluatesClosures;
+
     public static string $view = "sunburst-chart::sunburst-chart";
 
-    protected array $data = [];
+    public array|Closure $data  = [];
 
-    public function __construct()
-    {
-        $this->data = $this->data = [
-            'name' => 'testing data',
-            'color' => 'green',
-            'children' => [
-                [
-                    'name' => 'a',
-                    'color' => 'red',
-                    'size' => 1
-                ],
-                [
-                    'name' => 'b',
-                    'color' => 'purple',
-                    'size' => 1,
-                    'children' => [
-                        [
-                            'name' => 'ba',
-                            'color' => 'green',
-                            'size' => 1
-                        ],
-                        [
-                            'name' => 'bb',
-                            'color' => 'yellow',
-                            'size' => 1,
-                            'children' => [
-                                [
-                                    'name' => 'bba',
-                                    'color' => 'orange',
-                                    'size' => 1
-                                ],
-                                [
-                                    'name' => 'bbb',
-                                    'color' => 'brown',
-                                    'size' => 1
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
-            ]
-        ];
-    }
-    public function getData(): array
+    protected function getViewData(): array
     {
         return $this->evaluate($this->data);
     }
 
-    public function evaluate(array | \Closure $value)
+    public function setData(array $data): void
     {
-        if ($value instanceof \Closure) {
-            return app()->call($value, []);
-        }
-
-        return $value;
+        $this->data = $data;
     }
 
-    public function setData(array $newData): void
+    public function render(): View
     {
-        $nData = $this->evaluate($newData);
-
-        $this->data = $nData;
+        return view(static::$view, $this->getViewData());
     }
 }

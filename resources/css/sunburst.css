@@ -6,14 +6,14 @@
 
 .sunburst-viz {
     height: 100%;
-    width: 100%;
+    width: 180%;
 }
 
 #myChart {
     display: flex;
     justify-content: space-evenly;
     min-width: 70%;
-    height: 400px;
+    height: auto;
     flex-direction: column;
     align-items: center;
 }
