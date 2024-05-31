@@ -45,6 +45,11 @@ const defaultOptions = {
 
 compile({
     ...defaultOptions,
-    entryPoints: ['./resources/js/index.js'],
-    outfile: './resources/dist/sunburst-chart.js',
+    entryPoints: ['./resources/js/sunburst.js'],
+    outfile: './resources/dist/sunburst-chart-script.js',
+})
+compile({
+    ...defaultOptions,
+    entryPoints: ['./resources/css/sunburst.css'],
+    outfile: './resources/dist/sunburst-chart-styles.css',
 })

@@ -7,6 +7,8 @@ use Filament\Panel;
 
 class SunburstChartPlugin implements Plugin
 {
+    public SunburstChart $sunburst;
+
     public function getId(): string
     {
         return 'sunburst-chart';
@@ -14,12 +16,20 @@ class SunburstChartPlugin implements Plugin
 
     public function register(Panel $panel): void
     {
-        //
+        $panel
+            ->widgets([
+                $this->sunburst::class
+            ]);
     }
 
     public function boot(Panel $panel): void
     {
-        //
+    }
+
+    public function __construct($data)
+    {
+        $this->sunburst = new SunburstChart();
+        $this->sunburst->setData($data);
     }
 
     public static function make(): static

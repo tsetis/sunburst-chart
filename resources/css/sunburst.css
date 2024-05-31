@@ -1,0 +1,24 @@
+.sunburst-viz>svg {
+    height: auto !important;
+    /* min-height: 600px !important; */
+    width: unset !important;
+}
+
+.sunburst-viz {
+    height: 100%;
+    width: 100%;
+}
+
+#myChart {
+    display: flex;
+    justify-content: space-evenly;
+    min-width: 70%;
+    height: 400px;
+    flex-direction: column;
+    align-items: center;
+}
+
+svg>* {
+    font-size: 20px !important;
+    overflow: ellipsis;
+}

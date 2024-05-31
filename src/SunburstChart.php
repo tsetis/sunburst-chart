@@ -6,13 +6,13 @@ use Filament\Widgets\Widget;
 
 class SunburstChart extends Widget
 {
-    public static string $view = "sunburst-chart::widget";
+    public static string $view = "sunburst-chart::sunburst-chart";
 
-    protected static array $data = [];
+    protected array $data = [];
 
-    public function getData(): array
+    public function __construct()
     {
-        $this->data = [
+        $this->data = $this->data = [
             'name' => 'testing data',
             'color' => 'green',
             'children' => [
@@ -52,7 +52,25 @@ class SunburstChart extends Widget
                 ]
             ]
         ];
+    }
+    public function getData(): array
+    {
+        return $this->evaluate($this->data);
+    }
 
-        return $this->data;
+    public function evaluate(array | \Closure $value)
+    {
+        if ($value instanceof \Closure) {
+            return app()->call($value, []);
+        }
+
+        return $value;
+    }
+
+    public function setData(array $newData): void
+    {
+        $nData = $this->evaluate($newData);
+
+        $this->data = $nData;
     }
 }

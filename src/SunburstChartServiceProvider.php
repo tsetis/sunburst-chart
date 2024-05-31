@@ -7,15 +7,9 @@ use Filament\Support\Assets\Asset;
 use Filament\Support\Assets\Css;
 use Filament\Support\Assets\Js;
 use Filament\Support\Facades\FilamentAsset;
-use Filament\Support\Facades\FilamentIcon;
-use Illuminate\Filesystem\Filesystem;
-use Livewire\Features\SupportTesting\Testable;
 use Livewire\Livewire;
-use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Tsetis\SunburstChart\Commands\SunburstChartCommand;
-use Tsetis\SunburstChart\Testing\TestsSunburstChart;
 
 class SunburstChartServiceProvider extends PackageServiceProvider
 {
@@ -31,21 +25,30 @@ class SunburstChartServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package->name(static::$name)
-                ->hasViews()
-                ->hasTranslations();
+            ->hasViews()
+            ->hasAssets()
+            ->hasTranslations();
     }
 
     public function packageBooted(): void
     {
+
         Livewire::component('sunburst-chart', SunburstChart::class);
+
         // Asset Registration
         FilamentAsset::register(
             assets: [
-                AlpineComponent::make('sunburst-js-script', __DIR__ . '/../resources/dist/sunburst-chart.js'),
-                AlpineComponent::make('sunburst-css-script', __DIR__ . '/../resources/dist/sunburst-chart.css'),
+                AlpineComponent::make('sunburst-js-script', __DIR__ . '/../resources/dist/sunburst-chart-script.js'),
+                Css::make('sunburst-css-script', __DIR__ . '/../resources/dist/sunburst-chart-styles.css'),
             ],
             package: 'tsetis/sunburst-chart'
         );
+
+        // dump(FilamentAsset::getAlpineComponents());
+        $sunburst = new SunburstChart();
+        FilamentAsset::registerScriptData([
+            'data' => $sunburst->getData(),
+        ]);
     }
 
     protected function getAssetPackageName(): ?string
