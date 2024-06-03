@@ -9,9 +9,7 @@
         ax-load-css="{{\Filament\Support\Facades\FilamentAsset::getStyleHref('sunburst-css-script', 'tsetis/sunburst-chart')}}"
         >
         <div
-            id="myChart"></div>
-
+            id="myChart"></di>
         </div>
-        <button id="button">Testing</button>
     </x-filament::section>
 </x-filament-widgets::widget>

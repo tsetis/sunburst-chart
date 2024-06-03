@@ -44,12 +44,6 @@ class SunburstChartServiceProvider extends PackageServiceProvider
             ],
             package: 'tsetis/sunburst-chart'
         );
-
-        // dump(FilamentAsset::getAlpineComponents());
-        // $sunburst = new SunburstChart();
-        FilamentAsset::registerScriptData([
-            // 'data' => SunburstChart::getData(),
-        ]);
     }
 
     protected function getAssetPackageName(): ?string
