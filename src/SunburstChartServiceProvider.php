@@ -8,8 +8,10 @@ use Filament\Support\Assets\Css;
 use Filament\Support\Assets\Js;
 use Filament\Support\Facades\FilamentAsset;
 use Livewire\Livewire;
+use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
+use Tsetis\SunburstChart\Commands\SunburstChartCommand;
 
 class SunburstChartServiceProvider extends PackageServiceProvider
 {
@@ -27,8 +29,15 @@ class SunburstChartServiceProvider extends PackageServiceProvider
         $package->name(static::$name)
             ->hasViews()
             ->hasAssets()
-            // ->hasTranslations()
-            ->hasViewComponents('sunburst-chart');
+            ->hasViewComponents('sunburst-chart')
+            ->hasCommands($this->getCommands())
+            ->hasInstallCommand(function (InstallCommand $command) {
+                $command
+                    ->publishConfigFile()
+                    ->publishMigrations()
+                    ->askToRunMigrations()
+                    ->askToStarRepoOnGitHub(':vendor_slug/:package_slug');
+            });
     }
 
     public function packageBooted(): void
@@ -70,6 +79,16 @@ class SunburstChartServiceProvider extends PackageServiceProvider
     {
         return [
             'create_sunburst-chart_table',
+        ];
+    }
+
+    /**
+     * @return array<class-string>
+     */
+    protected function getCommands(): array
+    {
+        return [
+            SunburstChartCommand::class,
         ];
     }
 }
