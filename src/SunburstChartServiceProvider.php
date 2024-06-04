@@ -27,8 +27,8 @@ class SunburstChartServiceProvider extends PackageServiceProvider
         $package->name(static::$name)
             ->hasViews()
             ->hasAssets()
-            ->hasViewComponents('sunburst-chart')
-            ->hasTranslations();
+            // ->hasTranslations()
+            ->hasViewComponents('sunburst-chart');
     }
 
     public function packageBooted(): void

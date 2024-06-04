@@ -22,3 +22,11 @@ svg>* {
     font-size: 20px !important;
     overflow: ellipsis;
 }
+
+.title {
+    font-weight: 600;
+}
+
+.description {
+    color: darkgray;
+}
