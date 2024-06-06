@@ -2,6 +2,7 @@
 
 namespace Tsetis\SunburstChart;
 
+use App\Services\SunburstInstantiationService;
 use Filament\Widgets\Widget;
 use Closure;
 use Filament\Support\Concerns\CanBeLazy;
@@ -10,33 +11,19 @@ use Filament\Widgets\WidgetConfiguration;
 use Illuminate\Contracts\View\View;
 use Livewire\Component;
 
-class SunburstChart extends Widget
+abstract class SunburstChart extends Widget
 {
     use EvaluatesClosures;
     use CanBeLazy;
 
     public static string $view = "sunburst-chart::sunburst-chart";
 
-    public array|Closure $chartParameters  = [];
+    public array $chartParameters  = [];
 
-    public static function make(?array $chartParameters = null): WidgetConfiguration
+    public function mount()
     {
-        return app(WidgetConfiguration::class, [
-            'widget' => static::class,
-            'chartParameters' => $chartParameters
-        ]);
+        $this->chartParameters = $this->getData();
     }
 
-    /**
-     * @return array<string, mixed>
-     */
-    protected function getViewData(): array
-    {
-        return $this->evaluate($this->chartParameters);
-    }
-
-    public function render(): View
-    {
-        return view(static::$view, $this->getViewData());
-    }
+    abstract public function getData(): array;
 }

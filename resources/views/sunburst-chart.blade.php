@@ -1,8 +1,5 @@
 <x-filament-widgets::widget>
     <x-filament::section>
-        @php
-            dd($chartParameters);
-        @endphp
     <div
         x-ignore
         ax-load
@@ -10,15 +7,18 @@
         x-data="SunburstObject(@js($chartParameters['data']))"
 
 
-        ax-load-css="{{\Filament\Support\Facades\FilamentAsset::getStyleHref('sunburst-css-script', 'tsetis/sunburst-chart')}}"
-        >
-        {{-- Instantiated from the AdminPanelProvider class--}}
-        <p class="title">{{$chartParameters['title']}}</p>
+        ax-load-css="{{\Filament\Support\Facades\FilamentAsset::getStyleHref('sunburst-css-script', 'tsetis/sunburst-chart')}}">
+        <p
+            class="title">
+            {{ $chartParameters['title'] }}
+        </p>
+
         <div
             id="myChart">
         </di>
     </div>
-    <p class="description">{{$chartParameters['description']}}
+    <p class="description">
+        {{$chartParameters['description']}}
     </p>
     </x-filament::section>
 </x-filament-widgets::widget>

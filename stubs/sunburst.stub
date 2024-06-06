@@ -1,0 +1,13 @@
+<?php
+
+namespace {{ namespace }};
+
+use Tsetis\SunburstChart\SunburstChart;
+
+class {{ class }} extends SunburstChart
+{
+    public function getData(): array
+    {
+        //
+    }
+}
