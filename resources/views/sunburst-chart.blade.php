@@ -6,8 +6,8 @@
         ax-load-src="{{\Filament\Support\Facades\FilamentAsset::getAlpineComponentSrc('sunburst-js-script', 'tsetis/sunburst-chart')}}"
         x-data="SunburstObject(@js($chartParameters['data']))"
 
-
-        ax-load-css="{{\Filament\Support\Facades\FilamentAsset::getStyleHref('sunburst-css-script', 'tsetis/sunburst-chart')}}">
+        {{-- x-load-css="[@js(\Filament\Support\Facades\FilamentAsset::getStyleHref('sunburst-css-script', 'tsetis/sunburst-chart'))]" --}}
+        >
         <p
             class="title">
             {{ $chartParameters['title'] }}

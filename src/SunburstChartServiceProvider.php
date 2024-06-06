@@ -60,17 +60,17 @@ class SunburstChartServiceProvider extends PackageServiceProvider
         return 'tsetis/sunburst-chart';
     }
 
-    /**
-     * @return array<Asset>
-     */
-    protected function getAssets(): array
-    {
-        return [
-            // AlpineComponent::make('sunburst-chart', __DIR__ . '/../resources/dist/components/sunburst-chart.js'),
-            Css::make('sunburst-chart-styles', __DIR__ . '/../resources/dist/sunburst-chart.css'),
-            Js::make('sunburst-chart-scripts', __DIR__ . '/../resources/dist/sunburst-chart.js'),
-        ];
-    }
+    // /**
+    //  * @return array<Asset>
+    //  */
+    // protected function getAssets(): array
+    // {
+    //     return [
+    //         // AlpineComponent::make('sunburst-chart', __DIR__ . '/../resources/dist/components/sunburst-chart.js'),
+    //         Css::make('sunburst-chart-styles', __DIR__ . '/../resources/dist/sunburst-chart.css'),
+    //         Js::make('sunburst-chart-scripts', __DIR__ . '/../resources/dist/sunburst-chart.js'),
+    //     ];
+    // }
 
     /**
      * @return array<string>
