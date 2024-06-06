@@ -14,7 +14,7 @@ abstract class SunburstChart extends Widget
 
     public static string $view = "sunburst-chart::sunburst-chart";
 
-    public array $chartParameters  = [];
+    public array $chartParameters;
 
     public function mount()
     {
@@ -28,6 +28,10 @@ abstract class SunburstChart extends Widget
 
     public function setChartInfo(array|Closure|string $dataType = null)
     {
+        //(1) When given a Closure
+        //(2) when given a string(the dataType name)
+        //(3) when given an array with title and description keys
+        //(4) when given nothing cause that's life ~
         if (($this->evaluate($dataType) instanceof Closure)) {
             $tempArray = $dataType;
         } else if ((!is_null($dataType)) && (is_string($dataType))) {

@@ -30,3 +30,13 @@ svg>* {
 .description {
     color: darkgray;
 }
+
+.section-div {
+    @media screen {}
+}
+
+@media screen and (max-width: 600px) {
+    .fi-wi-widget {
+        --col-span-default: span 2 / span 1 !important;
+    }
+}
