@@ -6,7 +6,8 @@
         "build": "node bin/build.js"
     },
     "devDependencies": {
-        "esbuild": "^0.19.2"
+        "esbuild": "^0.19.2",
+        "tailwindcss": "^3.4.4"
     },
     "dependencies": {
         "sunburst-chart": "^1.16.2"

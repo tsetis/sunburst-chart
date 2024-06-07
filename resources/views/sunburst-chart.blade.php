@@ -9,19 +9,23 @@
 
         {{-- x-load-css="[@js(\Filament\Support\Facades\FilamentAsset::getStyleHref('sunburst-css-script', 'tsetis/sunburst-chart'))]" --}}
 
-        style="display:flex; flex-direction:column;"
-        >
-        <p
-            class="title">
-            {{ $chartParameters['title'] }}
-        </p>
+        style="">
+        <header>
+            <h1
+                class="text-base font-semibold leading-6 text-gray-950 dark:text-white">
+                {{ $chartParameters['title'] }}
+            </h1>
 
+            <p
+                class="overflow-hidden break-words text-sm
+                        text-gray-500 dark:text-gray-400">
+                {{$chartParameters['description']}}
+            </p>
+        </header>
         <div
-            id="myChart">
+            id="myChart"
+            class="">
         </di>
-        <p class="description" style="order: 1;">
-            {{$chartParameters['description']}}
-        </p>
     </div>
     </x-filament::section>
 </x-filament-widgets::widget>
