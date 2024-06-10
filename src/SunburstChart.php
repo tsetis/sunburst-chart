@@ -6,6 +6,7 @@ use Filament\Widgets\Widget;
 use Closure;
 use Filament\Support\Concerns\CanBeLazy;
 use Filament\Support\Concerns\EvaluatesClosures;
+use Hamcrest\Arrays\IsArray;
 
 abstract class SunburstChart extends Widget
 {
@@ -23,8 +24,23 @@ abstract class SunburstChart extends Widget
 
     abstract public function getData(): array;
 
-    abstract public function getChartInfo(): string|Closure|array;
+    abstract public function getInfo(): string|Closure|array;
 
+    public function getCustomizationParameters(): array|null
+    {
+        return [
+            'minSliceAngle' => '[number]',
+            'maxLevels' => '[number]',
+            'excludeRoot' => '[boolean]',
+            'centerRadius' => '[number]',
+            'radiusScaleExponent' => '[number]',
+            'sort' => '[fn]',
+            'labelOrientation' => '[angular, radial or auto]',
+            'showLabels' => '[boolean]',
+            'showTooltip' => '[fn]',
+            // ...
+        ];
+    }
 
     public function setChartInfo(array|Closure|string $dataType = null)
     {
@@ -55,11 +71,23 @@ abstract class SunburstChart extends Widget
 
     public function setViewParameters(): array
     {
+        if (!empty($this->getCustomizationParameters())) {
+            $tempArray = [
+                'customs' => $this->getCustomizationParameters()
+            ];
+        } else {
+            $tempArray = [
+                'customs' => 'empty'
+            ];
+        }
         return array_merge(
-            [
-                'data' => $this->getData()
-            ],
-            $this->setChartInfo($this->getChartInfo())
+            array_merge(
+                [
+                    'data' => $this->getData()
+                ],
+                $this->setChartInfo($this->getInfo())
+            ),
+            $tempArray
         );
     }
 }

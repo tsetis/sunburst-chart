@@ -32,13 +32,13 @@ svg>* {
     min-height: 60vh;
 }
 
-/* @media screen and (max-width: 1500px) {
-    .col-[--col-span-default] fi-wi-widget {
-        --col-span-default: span 2 / span 1 !important;
+@media screen and (max-width: 1500px) {
+    .sunburst-chart:has(> div.col-[--col-span-default] fi-wi-widget fi-filament-info-widget) {
+        grid-column: var(span 2 / span 1) !important;
         height: 100%;
         width: 100%;
     }
-} */
+}
 
 .fi-wi-widget .fi-wi-chart{
     @apply lg:col-span-2;

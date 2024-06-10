@@ -7,6 +7,7 @@ use Closure;
 
 class {{ class }} extends SunburstChart
 {
+    /*Returns an array with each chart node's data. The minimum values are name, color and size (except for the root). Then each node may have children as a nested array, as well.*/
     public function getData(): array
     {
         return [
@@ -14,11 +15,14 @@ class {{ class }} extends SunburstChart
         ];
     }
 
-    public function getChartInfo(): string|Closure|array
+    /*Returns an array of key-value for the title and description*/
+    public function getInfo(): string|Closure|array
     {
         return [
             'title' => '',
             'description' => ''
         ];
     }
+
+
 }

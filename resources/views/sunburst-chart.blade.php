@@ -1,11 +1,13 @@
 <x-filament-widgets::widget>
-    <x-filament::section>
+    <x-filament::section
+        id="sunburst-chart"
+    >
     <div
         id="section-div"
         x-ignore
         ax-load
         ax-load-src="{{\Filament\Support\Facades\FilamentAsset::getAlpineComponentSrc('sunburst-js-script', 'tsetis/sunburst-chart')}}"
-        x-data="SunburstObject(@js($chartParameters['data']))"
+        x-data="SunburstObject(@js($chartParameters['data']), @js($chartParameters['customs']))"
 
         {{-- x-load-css="[@js(\Filament\Support\Facades\FilamentAsset::getStyleHref('sunburst-css-script', 'tsetis/sunburst-chart'))]" --}}
 
@@ -23,8 +25,7 @@
             </p>
         </header>
         <div
-            id="myChart"
-            class="">
+            id="myChart">
         </di>
     </div>
     </x-filament::section>
