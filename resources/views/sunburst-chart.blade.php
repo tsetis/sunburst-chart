@@ -1,6 +1,8 @@
 <x-filament-widgets::widget>
     <x-filament::section
         id="sunburst-chart"
+
+        class="min-w-40"
     >
     <div
         id="section-div"
@@ -27,6 +29,9 @@
         <div
             id="myChart">
         </di>
+        <p>
+            
+        </p>
     </div>
     </x-filament::section>
 </x-filament-widgets::widget>

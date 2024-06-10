@@ -29,17 +29,23 @@ abstract class SunburstChart extends Widget
     public function getCustomizationParameters(): array|null
     {
         return [
-            'minSliceAngle' => '[number]',
-            'maxLevels' => '[number]',
-            'excludeRoot' => '[boolean]',
-            'centerRadius' => '[number]',
-            'radiusScaleExponent' => '[number]',
-            'sort' => '[fn]',
-            'labelOrientation' => '[angular, radial or auto]',
-            'showLabels' => '[boolean]',
-            'showTooltip' => '[fn]',
-            // ...
+            'maxLevels' => 3,
+            'excludeRoot' => true,
+            'showTooltip' => true,
         ];
+
+        // [
+        //     'minSliceAngle' => '[number]',
+        //     'maxLevels' => '[number]',
+        //     'excludeRoot' => '[boolean]',
+        //     'centerRadius' => '[number]',
+        //     'radiusScaleExponent' => '[number]',
+        //     'sort' => '[fn]',
+        //     'labelOrientation' => '[angular, radial or auto]',
+        //     'showLabels' => '[boolean]',
+        //     'showTooltip' => '[fn]',
+        //     // ...
+        // ];
     }
 
     public function setChartInfo(array|Closure|string $dataType = null)
@@ -71,15 +77,18 @@ abstract class SunburstChart extends Widget
 
     public function setViewParameters(): array
     {
-        if (!empty($this->getCustomizationParameters())) {
+        $customs = $this->getCustomizationParameters();
+
+        if (!empty($customs) && (!str_contains(array_keys($customs)[0], "minSliceAngle"))) {
             $tempArray = [
-                'customs' => $this->getCustomizationParameters()
+                'customs' => $customs
             ];
         } else {
             $tempArray = [
-                'customs' => 'empty'
+                'customs' => null
             ];
         }
+
         return array_merge(
             array_merge(
                 [
