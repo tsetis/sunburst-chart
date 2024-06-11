@@ -13,7 +13,7 @@
 
         {{-- x-load-css="[@js(\Filament\Support\Facades\FilamentAsset::getStyleHref('sunburst-css-script', 'tsetis/sunburst-chart'))]" --}}
 
-        style="">
+        >
         <header>
             <h1
                 class="text-base font-semibold leading-6 text-gray-950 dark:text-white">
@@ -29,9 +29,6 @@
         <div
             id="myChart">
         </di>
-        <p>
-            
-        </p>
     </div>
     </x-filament::section>
 </x-filament-widgets::widget>

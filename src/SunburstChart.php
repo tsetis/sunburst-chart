@@ -32,6 +32,7 @@ abstract class SunburstChart extends Widget
             'maxLevels' => 3,
             'excludeRoot' => true,
             'showTooltip' => true,
+            'radiusScaleExponent' => 0.5,
         ];
 
         // [
