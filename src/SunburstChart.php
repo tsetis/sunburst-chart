@@ -25,7 +25,10 @@ abstract class SunburstChart extends Widget
 
     abstract public function getData(): array;
 
-    abstract public function getInfo(): string|Closure|array;
+    public function getInfo(): string|array|null
+    {
+        return null;
+    }
 
     public function getCustomizationParameters(): array|null
     {
@@ -50,15 +53,12 @@ abstract class SunburstChart extends Widget
         // ];
     }
 
-    public function setChartInfo(array|Closure|string $dataType = null)
+    public function setChartInfo(array|string $dataType = null)
     {
-        //(1) When given a Closure
-        //(2) when given a string(the dataType name)
-        //(3) when given an array with title and description keys
-        //(4) when given nothing cause that's life ~
-        if (($this->evaluate($dataType) instanceof Closure)) {
-            $tempArray = $dataType;
-        } else if ((!is_null($dataType)) && (is_string($dataType))) {
+        //(1) when given a string(the dataType name)
+        //(2) when given an array with title and description keys
+        //(3) when given nothing cause that's life ~
+        if ((!is_null($dataType)) && (is_string($dataType))) {
             $tempArray = [
                 'title' => "Multipie Chart: " . $dataType,
                 'description' => "This is a multipie chart that displays " . $dataType . " and its children"
