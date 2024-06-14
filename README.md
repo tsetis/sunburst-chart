@@ -35,14 +35,14 @@ php artisan make:sunburst-chart {widget-name}
 
 ## Instructions
 
-After running the aforementioned command a class that extends **SunburstChart** class will be created. That class comes with 2 necessary methods and an optional one:
+After running the aforementioned command a class that extends **SunburstChart** class will be created. That class comes with a necessary method and 2 optional ones:
 
 ### Nesessary Methods
 
 1. #### getData():
 
-    The getData method returns an `array` that contains that nesessary chart data. The **minimum attributes** that characterise each chart arc/node are `name` and `size` (except fo the root that does not need the size attribute).
-    Except for the root, the rest of the nodes can optionally have a `children` attribute that correspondes to nested nodes (that is, extra chart rings/layers). Moreover, each node can also accept an optional `color` attribute.
+    The getData method returns an `array` that contains the nesessary chart data. The **minimum attributes** that characterise each arc/node are `name` and `size` (except for the root that does not need the size attribute).
+    Except for the root, the rest of the nodes can optionally have a `children` attribute, as well, that correspondes to nested nodes (that is, extra chart rings/layers). Moreover, each node can also accept an optional `color` attribute.
 
     > If the user wishes to customize the chart's colors, every node of the chart must have a color attribute that accepts a color name (e.g. pink, red). Considering that some colors may not be rendered, the user should consult the [d3-color](https://d3js.org/d3-color) library that the project relies on. If not provided, each ring receives a random generated color.
 
@@ -110,10 +110,10 @@ After running the aforementioned command a class that extends **SunburstChart** 
 
 2. #### getCustomizationParameters():
 
-    The getCustomizationParameters() returns an array that contains key-value pairs of _method_name_ and _value_. The methods provided are limited and correspond to the package of [vasturiano/sunburst-chart](https://www.npmjs.com/package/sunburst-chart/v/1.16.0). Respectively, the values each method receives are specific. When this method is used each method*name (\_array index*) is called with the given value (_array value_) as a parameter.
+    The getCustomizationParameters() returns an array that contains key-value pairs of _method_name_ and _value_. The methods provided are limited and correspond to the package of [vasturiano/sunburst-chart](https://www.npmjs.com/package/sunburst-chart/v/1.16.0). Respectively, the values each method receives are specific. When this method is used each method name (_array index_) is called with the given value (_array value_) as a parameter.
     If this method is not called, some methods and values are used by default for basic chart customization purposes.
 
-    > Due to the complexity of each method, some may require more complex actions than the one described above. Therefore, it is highly suggested to consult the package of vasturiano for more information.
+    > Due to the complexity of each method, some may require more complex actions and structure than the one described above. Therefore, it is highly suggested to consult the package of vasturiano for more information.
 
 ## Credits
 
