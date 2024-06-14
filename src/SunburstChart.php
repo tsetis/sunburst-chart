@@ -7,6 +7,7 @@ use Closure;
 use Filament\Support\Concerns\CanBeLazy;
 use Filament\Support\Concerns\EvaluatesClosures;
 use Hamcrest\Arrays\IsArray;
+use PhpParser\Node\Expr\BinaryOp\BooleanOr;
 
 abstract class SunburstChart extends Widget
 {
@@ -60,7 +61,7 @@ abstract class SunburstChart extends Widget
         } else if ((!is_null($dataType)) && (is_string($dataType))) {
             $tempArray = [
                 'title' => "Multipie Chart: " . $dataType,
-                'description' => "This is a demo multipie chart that displays " . $dataType . " and its children"
+                'description' => "This is a multipie chart that displays " . $dataType . " and its children"
             ];
         } else if ((!is_null($dataType)) && (is_array($dataType))) {
             $tempArray = [
@@ -78,16 +79,13 @@ abstract class SunburstChart extends Widget
 
     public function setViewParameters(): array
     {
+        //Check is title and description parameters are valid
         $customs = $this->getCustomizationParameters();
 
-        if (!empty($customs) && (!str_contains(array_keys($customs)[0], "minSliceAngle"))) {
-            $tempArray = [
-                'customs' => $customs
-            ];
+        if ($this->checkCustomParameters($customs)) {
+            $tempArray = $customs;
         } else {
-            $tempArray = [
-                'customs' => null
-            ];
+            $tempArray = null;
         }
 
         return array_merge(
@@ -97,7 +95,18 @@ abstract class SunburstChart extends Widget
                 ],
                 $this->setChartInfo($this->getInfo())
             ),
-            $tempArray
+            [
+                'customs' => $tempArray
+            ]
         );
+    }
+
+    private function checkCustomParameters($customs): bool
+    {
+
+        if (!empty($customs) && (!str_contains(array_keys($customs)[0], "minSliceAngle"))) {
+            return true;
+        }
+        return false;
     }
 }

@@ -8,6 +8,10 @@ You can install the package by :
 composer require tsetis/sunburst-chart
 ```
 
+## Use
+
+The following command will create a class
+
 ## Credits
 
 -   [Stelios Tsetis](https://github.com/tsetis)
