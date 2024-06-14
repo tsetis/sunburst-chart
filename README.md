@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-This plugin works upon filament and it's core concepts. Some packages that need to be preinstalled are:
+This plugin works upon filament and its core concepts. Some packages that need to be preinstalled are:
 
 1. laravel/laravel
 2. filament/filament
