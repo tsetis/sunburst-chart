@@ -20,7 +20,6 @@ export function SunburstObject(data, customs) {
             for (const [key, value] of Object.entries(customs)) {
                 myChart[key](value)
             };
-            console.log("inside if");
         }
     }
 
@@ -62,6 +61,14 @@ export function SunburstObject(data, customs) {
 
     //Final instantiation:
     myChart(document.getElementById("myChart"));
+
+    //Some extra size styling:
+    svgElement = document.getElementsByClassName("sunburst-viz").firstChild;
+    svgElement.setAttribute('viewBox', "0 0 100 100");
+    svgElement.setAttribute("preserveAspectRatio", "xMidYMid meet");
+
+    gElement = document.getElementByClassName("sunburst-viz").children[0].children[0];
+    gElement.setAttribute("class", "g-chart-content");
 
     function toTitleCase(str) {
         if (!str) {
