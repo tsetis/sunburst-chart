@@ -110,7 +110,7 @@ After running the aforementioned command a class that extends **SunburstChart** 
 
 2. #### getCustomizationParameters():
 
-    The getCustomizationParameters() returns an array that contains key-value pairs of _method_name_ and _value_. The methods provided are limited and correspond to the package of (vasturiano/sunburst-chart)[https://www.npmjs.com/package/sunburst-chart/v/1.16.0]. Respectively, the values each method receives are specific. When this method is used each method*name (\_array index*) is called with the given value (_array value_) as a parameter.
+    The getCustomizationParameters() returns an array that contains key-value pairs of _method_name_ and _value_. The methods provided are limited and correspond to the package of [vasturiano/sunburst-chart](https://www.npmjs.com/package/sunburst-chart/v/1.16.0). Respectively, the values each method receives are specific. When this method is used each method*name (\_array index*) is called with the given value (_array value_) as a parameter.
     If this method is not called, some methods and values are used by default for basic chart customization purposes.
 
     > Due to the complexity of each method, some may require more complex actions than the one described above. Therefore, it is highly suggested to consult the package of vasturiano for more information.
