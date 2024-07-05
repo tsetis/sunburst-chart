@@ -20,7 +20,7 @@ abstract class SunburstChart extends Widget
 
     public function mount()
     {
-        $this->chartParameters = $this->setViewParameters();
+        $this->chartParameters = null;
     }
 
     abstract public function getData(): array;
